@@ -6,25 +6,28 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!-- 配置扫描的包 -->
-    <context:component-scan base-package="com.argus.*" />
+    <context:component-scan base-package="com.argus.web.controller"/>
+    <!--BeanNameUrlHandlerMapping方式,Spring 3.x后基本不使用-->
+    <!--<bean name="/hello" class="com.argus.web.controller.HelloController"/>-->
 
     <!-- 开启注解 -->
+    <!--相当于注册了DefaultAnnotationHandlerMapping和AnnotationMethodHandlerAdapter两个bean，配置一些messageconverter-->
     <mvc:annotation-driven/>
 
     <!-- 访问静态资源 -->
-    <mvc:default-servlet-handler />
-    
+    <mvc:default-servlet-handler/>
+
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
-            <bean class="com.argus.web.intercept.CustomeHeaderInterceptor"></bean>
+            <bean class="com.argus.web.intercept.CustomeHeaderInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 
-    <!-- 视图解析器 -->
+    <!-- 配置JSP视图 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/view/"></property>
-        <property name="suffix" value=".jsp"></property>
+        <property name="prefix" value="/WEB-INF/view/"/>
+        <property name="suffix" value=".jsp"/>
     </bean>
 
 </beans>

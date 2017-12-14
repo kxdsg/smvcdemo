@@ -53,6 +53,7 @@
       <version>2.5</version>
       <!--<scope>provided</scope>-->
     </dependency>
+    <!--controller返回json数据，会自动引入jackson-core,jackson-annotation两个jar包-->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
