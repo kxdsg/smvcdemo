@@ -12,6 +12,6 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  */
 @Configuration
 @EnableAspectJAutoProxy //开启AOP
-@ComponentScan(basePackages = "com.argus.web")
+@ComponentScan(basePackages = {"com.argus.web"})
 public class SpringConfig {
 }

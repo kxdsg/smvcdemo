@@ -12,6 +12,7 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 
 /**
+ * 加载bean的方式测试
  * @author xingding
  * @date 2017/12/3.
  */
@@ -19,9 +20,9 @@ public class MainApplication {
 
     public static void main(String[] args) {
         //通过xml配置的方式获取bean
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml");
-        Car car = ctx.getBean("car1",Car.class);
-        System.out.println(car.toString());
+//        ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml","applicationContext.xml");
+//        Car car = ctx.getBean("car1",Car.class);
+//        System.out.println(car.toString());
 
 //        ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 //        Resource resource = resolver.getResource("classpath:beans.xml");
@@ -31,8 +32,10 @@ public class MainApplication {
 //        System.out.println(car.toString());
 
         //通过java配置信息类的方式获取bean
-//        ApplicationContext ctx2 = new AnnotationConfigApplicationContext(Beans.class);
-//        Car car2 = ctx2.getBean("car",Car.class);
-//        System.out.println(car2.toString());
+        AnnotationConfigApplicationContext ctx2 = new AnnotationConfigApplicationContext();
+        ctx2.register(Beans.class);
+        ctx2.refresh();
+        Car car2 = ctx2.getBean("car",Car.class);
+        System.out.println(car2.toString());
     }
 }

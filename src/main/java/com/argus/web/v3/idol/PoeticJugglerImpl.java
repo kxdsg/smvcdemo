@@ -7,6 +7,8 @@ package com.argus.web.v3.idol;
 public class PoeticJugglerImpl extends JugglerImpl {
     private PoemService poemService;
 
+    public PoeticJugglerImpl(){}
+
     public PoeticJugglerImpl(PoemService poemService){
         super();
         this.poemService = poemService;

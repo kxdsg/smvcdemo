@@ -5,12 +5,17 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 
+
     <bean id="car1" class="com.argus.web.bean.CarFactoryBean"
           p:carInfo="奥迪,黑色,50"/>
+
     <bean id="car" class="com.argus.web.bean.Car"
           p:brand="宝马"
           p:color="红色"
           p:maxSpeed="100"/>
+
+    <bean id="myBeanPostProcessor"
+          class="com.argus.web.processor.MyBeanFactoryPostProcessor"/>
 
     <bean id="allen" class="com.argus.web.v3.idol.JugglerImpl">
         <!--通过构造器注入-->
