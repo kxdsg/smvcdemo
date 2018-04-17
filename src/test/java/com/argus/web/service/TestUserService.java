@@ -24,9 +24,7 @@ public class TestUserService {
     @Test
     public void hasMatchUser(){
         boolean b1 = userService.hasMatchUser("admin","123456");
-        boolean b2 = userService.hasMatchUser("admin","111111");
         assertTrue(b1);
-        assertTrue(b2);
     }
 
     @Test

@@ -49,6 +49,7 @@
 
     <bean id="audience" class="com.argus.web.v3.idol.Audience"/>
 
+    <!--基于schema的切面-->
     <aop:config>
         <!--定义一个切面-->
         <aop:aspect ref="audience">
@@ -71,6 +72,39 @@
 
 
     </aop:config>
+
+
+    <bean id="greetingAdvice" class="com.argus.web.aop.GreetingBeforeAdvice"/>
+    <bean id="enjoyAdvice" class="com.argus.web.aop.EnjoyAfterAdvice"/>
+    <bean id="greetingAround" class="com.argus.web.aop.GreetingAroundInterceptor"/>
+    
+    <bean id="target" class="com.argus.web.aop.NaiveWaiter"/>
+
+    <bean id="waiter" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="proxyInterfaces" value="com.argus.web.aop.Waiter"/>
+        <!--前置增强和后置增强-->
+        <!--<property name="interceptorNames" value="greetingAdvice,enjoyAdvice"/>-->
+        <!--<property name="interceptorNames">-->
+            <!--<list>-->
+                <!--<idref local="greetingAdvice"/>-->
+                <!--<idref local="enjoyAdvice"/>-->
+            <!--</list>-->
+        <!--</property>-->
+        <!--环绕增强-->
+        <property name="interceptorNames" value="greetingAround"/>
+        <property name="targetName" value="target"/>
+    </bean>
+
+    <!--定义切面-->
+    <!--<bean id="greetingAdvisor" class="com.argus.web.aop.GreetingAdvisor">-->
+        <!--<property name="advice" ref="greetingAdvice"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="waiter1" class="org.springframework.aop.framework.ProxyFactoryBean">-->
+        <!--<property name="interceptorNames" value="greetingAdvisor"/>-->
+        <!--<property name="targetName" value="target"/>-->
+        <!--<property name="proxyTargetClass" value="true"/>-->
+    <!--</bean>-->
 
 
 
