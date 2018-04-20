@@ -22,6 +22,7 @@
     <!-- 访问静态资源 -->
     <mvc:default-servlet-handler/>
 
+    <!--装配拦截器-->
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**"/>

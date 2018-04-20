@@ -1,5 +1,7 @@
 package com.argus.web.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 /**
@@ -9,10 +11,12 @@ public class TUser {
     private Integer id;
     private String name;
     private String sex;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthDay;
     private String address;
     private String email;
     private String remark;
+    private String userLevel;
 
     public Integer getId() {
         return id;
@@ -70,6 +74,14 @@ public class TUser {
         this.remark = remark;
     }
 
+    public String getUserLevel() {
+        return userLevel;
+    }
+
+    public void setUserLevel(String userLevel) {
+        this.userLevel = userLevel;
+    }
+
     @Override
     public String toString() {
         return "TUser{" +
@@ -80,6 +92,7 @@ public class TUser {
                 ", address='" + address + '\'' +
                 ", email='" + email + '\'' +
                 ", remark='" + remark + '\'' +
+                ", userLevel='" + userLevel + '\'' +
                 '}';
     }
 }

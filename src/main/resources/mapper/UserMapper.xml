@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--namespace是对应mapper接口的全名-->
+<mapper namespace="com.argus.web.mapper.UserMapper">
+
+    <!--resultType为实体名称，对应com.argus.web.domain.TUser，实体中包含数据库所有字段
+    如果实体的属性名称和字段名称不对应，可以使用另外一种返回类型resultMap来映射数据-->
+    <select id="listUsers" resultType="TUser" parameterType="java.util.HashMap">
+     select * from user b
+        where 1=1
+        <if test="name != null and name !='' ">
+            and b.`name` like CONCAT('%','/${name}','%' ) escape '/'
+        </if>
+        <if test="sex != null and sex != '' ">
+            and b.sex=#{sex}
+        </if>
+    </select>
+
+    <!--实体中只包含对应数据库的部分字段-->
+    <select id="listUsersSpec" resultType="com.argus.web.vo.UserVo" parameterType="java.util.HashMap">
+        select * from user b
+        where 1=1
+        <if test="name != null and name !='' ">
+            and b.`name` like CONCAT('%','/${name}','%' ) escape '/'
+        </if>
+        <if test="sex != null and sex != '' ">
+            and b.sex=#{sex}
+        </if>
+    </select>
+
+</mapper>
