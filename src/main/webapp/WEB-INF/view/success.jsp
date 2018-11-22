@@ -19,6 +19,7 @@
 <body>
     <h1>上传成功</h1>
     <%--<img src="${basePath}${imgpath}"/>--%>
-    <img src="/showPic.do?filePath=${imgpath}"/>
+    <img src="/showPic.do?filePath=${filePath}"/>
+<a href="/download.do?filePath=${filePath}&fileType=${fileType}">${fileName}</a>
 </body>
 </html>

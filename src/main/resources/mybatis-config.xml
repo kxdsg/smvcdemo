@@ -26,6 +26,7 @@
     </settings>
 
     <typeAliases>
+        <!--自动扫描包自定义别名-->
         <package name="com.argus.web.domain"/>
     </typeAliases>
 
