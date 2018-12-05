@@ -135,7 +135,7 @@ public class UploadController {
     }
 
     @RequestMapping(value = "/download.do")
-    public ResponseEntity<byte[]> download(@RequestParam String filePath, @RequestParam String fileType, HttpServletRequest request){
+    public ResponseEntity<byte[]> download(@RequestParam String filePath){
         try{
             String fileName = filePath.substring(filePath.lastIndexOf("/")+1,filePath.length());
             System.out.println("fileName:" + fileName);
@@ -146,7 +146,7 @@ public class UploadController {
             HttpHeaders headers = new HttpHeaders();
             MediaType mediaType = null;
             try {
-                mediaType = MediaType.valueOf(fileType);
+//                mediaType = MediaType.valueOf(fileType);
             }catch (Exception e) {
                 System.err.println(e.getMessage());
                 e.printStackTrace();
